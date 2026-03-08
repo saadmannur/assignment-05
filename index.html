@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,16 +23,73 @@
     <link rel="stylesheet" href="./tailwind.css">
 
     <style>
-        *{
+        * {
             font-family: "Geist", sans-serif;
         }
     </style>
 
 </head>
-<body class="">
 
-    <h2 class="text-3xl text-green-600"> hello kaka</h2>
-    
+<body class="bg-base-300">
+    <header>
+        <div class="navbar bg-base-100 shadow-sm px-12">
+            <div class="navbar-start space-x-2">
+                <img src="./assets/github-logo.png" alt="" class="w-8 h-8">
+                <h2 class="text-xl font-bold">GitHub Issues Tracker</h2>
+            </div>
+            <div class="navbar-end">
+                <div class="join">
+                    <div>
+                        <label class="input validator join-item">
+                            <input type="text" placeholder="Search issues...">
+                        </label>
+                    </div>
+                    <button class="btn btn-primary join-item">+ New Issue</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- button section -->
+    <section class="bg-base-100 w-11/12 mx-auto p-6 mt-10 rounded-xl shadow">
+        <div class=" space-x-3">
+            <button class="btn btn-soft btn-primary">All</button>
+            <button class="btn btn-soft btn-primary">Open</button>
+            <button class="btn btn-soft btn-primary">Close</button>
+        </div>
+    </section>
+
+    <!-- count section -->
+    <section class="bg-base-100 w-11/12 mx-auto shadow rounded-xl p-4 my-4 flex justify-between items-center">
+        <div class="flex gap-5 justify-center items-center">
+            <div class="w-10 h-10 bg-purple-100 flex justify-center items-center rounded-full">
+                <img src="./assets/Aperture.png" alt="" class="w-6 h-6">
+            </div>
+            <div>
+                <h2 class="text-xl font-bold"><span id="counter-issue">0</span> Issues</h2>
+                <p class="text-gray-400">Track and manage your project issues</p>
+            </div>
+        </div>
+        <div class="flex gap-5 justify-center items-center">
+            <div class="flex gap-2 justify-center items-center">
+                <div class="w-4 h-4 rounded-full bg-green-500"></div>
+                <p>Open</p>
+            </div>
+            <div class="flex gap-2 justify-center items-center">
+                <div class="w-4 h-4 rounded-full bg-purple-500"></div>
+                <p>Close</p>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- all container -->
+    <section id="issue-container" class="bg-base-200 w-11/12 mx-auto shadow-sm rounded-xl p-5 grid grid-cols-3 gap-5">
+        
+
+    </section> 
+
     <script src="./scripts/script.js"></script>
 </body>
+
 </html>

@@ -30,17 +30,57 @@
 
 </head>
 
-<body class="">
-    <div>
-        <h2>hello Bangladesh</h2>
-        <label for=""> UserName</label>
-        <input type="text"><br>
-        <button onclick="mainPageLoad()" class="btn btn-primary">click me</button>
+<body class="container mx-auto ">
+    <div class=" flex justify-center items-center py-20 ">
+        <div class=" p-8 bg-base-100 shadow-xl border border-gray-200 rounded-xl space-y-5">
+            <div class=" text-center space-y-8">
+                <img src="./assets/github-logo.png" alt="" class="mx-auto">
+                <div>
+                    <h2 class="text-2xl font-bold">GitHub Issues Tracker</h2>
+                    <p class="text-[#64748B]">Sign in to manage your issues</p>
+                </div>
+            </div>
+            <div>
+                <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
+                    <legend class="fieldset-legend">Login</legend>
+                
+                    <label class="label">User Name</label>
+                    <input id="user-input" type="text" class="input" placeholder="Username" />
+                    <p class="text-purple-400">Default: admin</p>
+                
+                    <label class="label">Password</label>
+                    <input id="user-password" type="password" class="input" placeholder="Password" />
+                    <p class="text-purple-400">Default: admin123</p>
+                
+                    <button onclick="mainPageLoad()" class="btn btn-primary mt-4">Login</button>
+                </fieldset>
+            </div>
+            <div class="flex justify-center items-center gap-1">
+                <span class="text-[4px] text-gray-400">----------------------------</span>
+                <p>OR</p>
+                <span class="text-[4px] text-gray-400">----------------------------</span>
+            </div>
+            <div>
+                <p class="text-sm text-[#64748B] text-center py-2">Demo Credentials:</p>
+                <div class="bg-base-300 p-4 text-center rounded-xl">
+                    <h2>Username: admin</h2>
+                    <h2>Password: admin123</h2>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
         const mainPageLoad = () => {
-            window.location.href = "./index.html";
+            const userInput = document.getElementById("user-input").value
+            const userPassword = document.getElementById("user-password").value
+            // console.log(userInput, userPassword)
+            if(userInput == 'admin' || userPassword == 'admin123'){
+                window.location.href = "./index.html";
+            }
+            else{
+                return;
+            }   
         }
     </script>
 </body>
