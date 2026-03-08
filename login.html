@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Issue Tracker</title>
+    <title>LogIn Page</title>
 
     <!-- font integration -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,15 +23,26 @@
     <link rel="stylesheet" href="./tailwind.css">
 
     <style>
-        *{
+        * {
             font-family: "Geist", sans-serif;
         }
     </style>
 
 </head>
-<body class="">
 
-    <h2 class="text-3xl text-green-600"> hello kaka</h2>
-    
+<body class="">
+    <div>
+        <h2>hello Bangladesh</h2>
+        <label for=""> UserName</label>
+        <input type="text"><br>
+        <button onclick="mainPageLoad()" class="btn btn-primary">click me</button>
+    </div>
+
+    <script>
+        const mainPageLoad = () => {
+            window.location.href = "./index.html";
+        }
+    </script>
 </body>
+
 </html>
