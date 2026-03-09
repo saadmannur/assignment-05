@@ -49,6 +49,9 @@ const displayAllIssue = (issues) => {
             </div>
         </div>
         `
+        issueCard.addEventListener("click", () => {
+            loadCardDetails(issue.id)
+        })
         issueContainer.appendChild(issueCard)
         addBorder(issue, issueCard)
     });
@@ -108,10 +111,14 @@ const displayOpenIssue = (allIssues) => {
         
         
         `
+        issueCard.addEventListener("click", () => {
+            loadCardDetails(issue.id)
+        })
         openContainer.appendChild(issueCard)
         addBorder(issue, issueCard)
     });
 }
+
 const loadClosedIssue = () => {
     const url = "https://phi-lab-server.vercel.app/api/v1/lab/issues";
     fetch(url)
@@ -166,6 +173,9 @@ const displayClosedIssue = (allIssues) => {
         
         
         `
+        issueCard.addEventListener("click", () => {
+            loadCardDetails(issue.id)
+        })
         closedContainer.appendChild(issueCard)
         addBorder(issue, issueCard)
     });
@@ -214,4 +224,50 @@ const addBorder = (issue, issueCard) => {
         card.classList.remove("border-green-500")
         card.classList.add("border-purple-500")
     }
+}
+
+const loadCardDetails = async (id) => {
+    const url = `https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`
+    const res = await fetch(url)
+    const cardDetails = await res.json()
+    displayCardDetails(cardDetails.data)
+}
+const displayCardDetails = (details) => {
+    const detailsContainer = document.getElementById("details-container") 
+    detailsContainer.innerHTML = `
+        <h2 class="font-bold text-xl">${details.title}</h2>
+                <div class="flex items-center gap-3 ml-0">
+                    <p class="btn-success btn rounded-4xl ">${details.status}</p>
+                    <small>
+                        <p class=" text-gray-500">Opened by ${details.author}</p>
+                    </small>
+                    <small>
+                        <p class=" text-gray-500">${details.createdAt}</p>
+                    </small>
+                </div>
+                <div class="flex items-center gap-2">
+                    <div
+                        class="text-red-400 bg-red-100 text-center rounded-3xl px-6 py-1 flex justify-center items-center border border-red-400">
+                        <h2>${details.labels[0]}</h2>
+                    </div>
+                    <div
+                        class="text-yellow-600 bg-yellow-100 text-center rounded-3xl px-6 py-1 flex justify-center items-center border border-yellow-400">
+                        <h2>${details.labels[1]}</h2>
+                    </div>
+                </div>
+                <p class="text-gray-500">${details.description}</p>
+                <div class="bg-base-300 flex justify-between items-center rounded-xl p-6">
+                    <div>
+                        <h4 class="text-gray-500">assignee:</h4>
+                        <h2 class="font-bold">${details.assignee}</h2>
+                    </div>
+                    <div>
+                        <h4 class="text-gray-500">Priority:</h4>
+                        <h2 class="btn btn-secondary rounded-4xl">${details.priority}</h2>
+                    </div>
+                
+                </div>
+    `
+    document.getElementById("my_modal_5").showModal()
+
 }
