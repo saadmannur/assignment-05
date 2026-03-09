@@ -1,4 +1,5 @@
 const loadAllIssue = () => {
+    manageSpineer(true)
     const url = "https://phi-lab-server.vercel.app/api/v1/lab/issues";
     fetch(url)
         .then(res => res.json())
@@ -56,9 +57,11 @@ const displayAllIssue = (issues) => {
         addBorder(issue, issueCard)
     });
     issueCounter()
+    manageSpineer(false)
 }
 
 const loadOpenIssue = () => {
+    manageSpineer(true)
     const url = "https://phi-lab-server.vercel.app/api/v1/lab/issues";
     fetch(url)
         .then(res => res.json())
@@ -118,9 +121,11 @@ const displayOpenIssue = (allIssues) => {
         openContainer.appendChild(issueCard)
         addBorder(issue, issueCard)
     });
+    manageSpineer(false)
 }
 
 const loadClosedIssue = () => {
+    manageSpineer(true)
     const url = "https://phi-lab-server.vercel.app/api/v1/lab/issues";
     fetch(url)
         .then(res => res.json())
@@ -180,6 +185,7 @@ const displayClosedIssue = (allIssues) => {
         closedContainer.appendChild(issueCard)
         addBorder(issue, issueCard)
     });
+    manageSpineer(false)
 }
 
 
@@ -198,10 +204,6 @@ const buttonAddSoft = () => {
         btn.classList.add("btn-soft")
     });
 }
-
-
-
-loadAllIssue();
 
 
 const issueCounter = () => {
@@ -228,6 +230,7 @@ const addBorder = (issue, issueCard) => {
 }
 
 document.getElementById("search-btn").addEventListener("click", () => {
+    manageSpineer(true)
     const input = document.getElementById("search-input")
     const searchValue = input.value.trim().toLowerCase()
     
@@ -239,9 +242,21 @@ document.getElementById("search-btn").addEventListener("click", () => {
     } )
 })
 
+const manageSpineer = (status) => {
+    if(status == true){
+        document.getElementById("spiner").classList.remove("hidden")
+        // document.getElementById("issue-container").classList.add("hidden")
+    }
+    else{
+        document.getElementById("spiner").classList.add("hidden")
+        // document.getElementById("issue-container").classList.remove("hidden")
+    }
+}
+
 loadAllIssue();
 
 const loadCardDetails = async (id) => {
+    manageSpineer(true)
     const url = `https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`
     const res = await fetch(url)
     const cardDetails = await res.json()
@@ -284,5 +299,6 @@ const displayCardDetails = (details) => {
                 </div>
     `
     document.getElementById("my_modal_5").showModal()
+    manageSpineer(false)
 
 }
