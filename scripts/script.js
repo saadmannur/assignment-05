@@ -55,6 +55,7 @@ const displayAllIssue = (issues) => {
         issueContainer.appendChild(issueCard)
         addBorder(issue, issueCard)
     });
+    issueCounter()
 }
 
 const loadOpenIssue = () => {
@@ -225,6 +226,20 @@ const addBorder = (issue, issueCard) => {
         card.classList.add("border-purple-500")
     }
 }
+
+document.getElementById("search-btn").addEventListener("click", () => {
+    const input = document.getElementById("search-input")
+    const searchValue = input.value.trim().toLowerCase()
+    
+    fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchValue}`)
+    .then(res => res.json())
+    .then(data => {
+        displayAllIssue(data.data)
+        document.getElementById("counter-issue").innerText = data.total
+    } )
+})
+
+loadAllIssue();
 
 const loadCardDetails = async (id) => {
     const url = `https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`
