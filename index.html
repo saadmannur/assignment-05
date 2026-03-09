@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Issue Tracker</title>
+    <title>LogIn Page</title>
 
     <!-- font integration -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,98 +30,59 @@
 
 </head>
 
-<body class="bg-base-300">
-    <header>
-        <div class="navbar bg-base-100 shadow-sm px-12">
-            <div class="navbar-start space-x-2">
-                <img src="./assets/github-logo.png" alt="" class="w-8 h-8">
-                <h2 class="text-xl font-bold">GitHub Issues Tracker</h2>
+<body class="container mx-auto ">
+    <div class=" flex justify-center items-center py-20 ">
+        <div class=" p-8 bg-base-100 shadow-xl border border-gray-200 rounded-xl space-y-5">
+            <div class=" text-center space-y-8">
+                <img src="./assets/github-logo.png" alt="" class="mx-auto">
+                <div>
+                    <h2 class="text-2xl font-bold">GitHub Issues Tracker</h2>
+                    <p class="text-[#64748B]">Sign in to manage your issues</p>
+                </div>
             </div>
-            <div class="navbar-end">
-                <div class="join">
-                    <div>
-                        <label class="input validator join-item">
-                            <input id="search-input" type="text" placeholder="Search issues...">
-                        </label>
-                    </div>
-                    <button id="search-btn" class="btn btn-primary join-item">+ New Issue</button>
+            <div>
+                <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
+                    <legend class="fieldset-legend">Login</legend>
+                
+                    <label class="label">User Name</label>
+                    <input id="user-input" type="text" class="input" placeholder="Username" />
+                    <p class="text-purple-400">Default: admin</p>
+                
+                    <label class="label">Password</label>
+                    <input id="user-password" type="password" class="input" placeholder="Password" />
+                    <p class="text-purple-400">Default: admin123</p>
+                
+                    <button onclick="mainPageLoad()" class="btn btn-primary mt-4">Login</button>
+                </fieldset>
+            </div>
+            <div class="flex justify-center items-center gap-1">
+                <span class="text-[4px] text-gray-400">----------------------------</span>
+                <p>OR</p>
+                <span class="text-[4px] text-gray-400">----------------------------</span>
+            </div>
+            <div>
+                <p class="text-sm text-[#64748B] text-center py-2">Demo Credentials:</p>
+                <div class="bg-base-300 p-4 text-center rounded-xl">
+                    <h2>Username: admin</h2>
+                    <h2>Password: admin123</h2>
                 </div>
             </div>
         </div>
-    </header>
+    </div>
 
-    <!-- button section -->
-    <section class="bg-base-100 w-11/12 mx-auto p-6 mt-10 rounded-xl shadow">
-        <div id="btn-section" class=" space-x-3">
-            <button onclick="loadAllIssue()" class="btn btn-primary all-button">All</button>
-            <button onclick="loadOpenIssue()" class="btn btn-soft btn-primary all-button">Open</button>
-            <button onclick="loadClosedIssue()" class="btn btn-soft btn-primary all-button">Close</button>
-        </div>
-    </section>
-
-    <!-- count section -->
-    <section class="bg-base-100 w-11/12 mx-auto shadow rounded-xl p-4 my-4 flex justify-between items-center">
-        <div class="flex gap-5 justify-center items-center">
-            <div class="w-10 h-10 bg-purple-100 flex justify-center items-center rounded-full">
-                <img src="./assets/Aperture.png" alt="" class="w-6 h-6">
-            </div>
-            <div>
-                <h2 class="text-xl font-bold"><span id="counter-issue">0</span> Issues</h2>
-                <p class="text-gray-400">Track and manage your project issues</p>
-            </div>
-        </div>
-        <div class="flex gap-5 justify-center items-center">
-            <div class="flex gap-2 justify-center items-center">
-                <div class="w-4 h-4 rounded-full bg-green-500"></div>
-                <p>Open</p>
-            </div>
-            <div class="flex gap-2 justify-center items-center">
-                <div class="w-4 h-4 rounded-full bg-purple-500"></div>
-                <p>Close</p>
-            </div>
-        </div>
-
-    </section>
-
-    <!-- spineer section -->
-    <section id="spiner" class="flex justify-center items-center py-10 hidden">
-        <span class="loading loading-bars loading-xl"></span>
-    </section>
-
-
-    <!-- all container -->
-    <section id="issue-container" class="bg-base-200 w-11/12 mx-auto shadow-sm rounded-xl p-5 grid grid-cols-3 gap-5">
-
-
-    </section>
-
-    <!-- open container -->
-    <section id="open-container" class="bg-base-200 w-11/12 mx-auto shadow-sm rounded-xl p-5 grid grid-cols-3 gap-5">
-
-    </section>
-
-    <!-- closed container -->
-    <section id="closed-container" class="bg-base-200 w-11/12 mx-auto shadow-sm rounded-xl p-5 grid grid-cols-3 gap-5">
-
-    </section>
-
-    <!-- Open the modal using ID.showModal() method -->
-    <!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
-    <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
-        <div class="modal-box">
-            <div id="details-container" class="space-y-5">
-                
-            </div>
-            <div class="modal-action">
-                <form method="dialog">
-                    <!-- if there is a button in form, it will close the modal -->
-                    <button class="btn btn-primary">Close</button>
-                </form>
-            </div>
-        </div>
-    </dialog>
-
-    <script src="./scripts/script.js"></script>
+    <script>
+        const mainPageLoad = () => {
+            const userInput = document.getElementById("user-input").value
+            const userPassword = document.getElementById("user-password").value
+            // console.log(userInput, userPassword)
+            if(userInput == 'admin' && userPassword == 'admin123'){
+                window.location.href = "./dashboard.html"; 
+            }
+            else{
+                return;
+            }   
+        }
+    </script>
 </body>
 
 </html>
