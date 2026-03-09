@@ -52,10 +52,10 @@
 
     <!-- button section -->
     <section class="bg-base-100 w-11/12 mx-auto p-6 mt-10 rounded-xl shadow">
-        <div class=" space-x-3">
-            <button class="btn btn-soft btn-primary">All</button>
-            <button class="btn btn-soft btn-primary">Open</button>
-            <button class="btn btn-soft btn-primary">Close</button>
+        <div id="btn-section" class=" space-x-3">
+            <button onclick="loadAllIssue()" class="btn btn-primary all-button">All</button>
+            <button onclick="loadOpenIssue()" class="btn btn-soft btn-primary all-button">Open</button>
+            <button onclick="loadClosedIssue()" class="btn btn-soft btn-primary all-button">Close</button>
         </div>
     </section>
 
@@ -89,7 +89,18 @@
 
     </section> 
 
+    <!-- open container -->
+    <section id="open-container" class="bg-base-200 w-11/12 mx-auto shadow-sm rounded-xl p-5 grid grid-cols-3 gap-5">
+
+    </section> 
+
+    <!-- closed container -->
+    <section id="closed-container" class="bg-base-200 w-11/12 mx-auto shadow-sm rounded-xl p-5 grid grid-cols-3 gap-5">
+
+    </section> 
+
     <script src="./scripts/script.js"></script>
+    
 </body>
 
 </html>
